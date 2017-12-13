@@ -27,6 +27,7 @@ var app = {
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
         document.addEventListener('deviceready', this.onDeviceReady, false);
+        
     },
     // deviceready Event Handler
     //
@@ -35,6 +36,13 @@ var app = {
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
         navigator.splashscreen.hide();
+        
+    navigator.wifi.getAccessPoints(function(data) {
+        alert(JSON.stringify(data));
+    }, function(err) {
+        alert(JSON.stringify(err));
+    })
+  
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
